@@ -7,8 +7,6 @@ namespace CSharp_Work12_IpPort
     {
         static void Main()
         {
-            string output = @"result.txt";
-
             Console.Write("Выберите метод ввода данных, где [1] - из файла, [2] - из консоли: ");
             
             try
@@ -31,7 +29,7 @@ namespace CSharp_Work12_IpPort
 
                         Console.WriteLine("ip = {0}, port = {1}", s.Ip, s.Port);
                         string result = "ip = " + s.Ip + "\nport = " + s.Port;
-                        File.WriteAllText(output, result);
+                        File.WriteAllText(@"result.txt", result);
                         Console.WriteLine("Информация сохранена в файл успешно!");
                     }
                     catch (Exception ex)
@@ -86,13 +84,13 @@ namespace CSharp_Work12_IpPort
             string[] ar2 = ar[0].Split('.');
                 if (Convert.ToInt32(ar2[0]) < 1)
                 throw new MeSettingsException(ar2[0] + " не корректное значение (диапазон от 1 до 255)");
-                if (ar2.Length != 4)
+                else if (ar2.Length != 4)
                         throw new MeSettingsException("Введено некорректное значение ip! Должно быть 4 числа!");
             foreach (var el in ar2)
             {
                 if (!int.TryParse(el, out _))
                     throw new MeSettingsException(el + " не является числом!");
-                if (Convert.ToInt32(el) < 0 || Convert.ToInt32(el) > 255)
+                else if (Convert.ToInt32(el) < 0 || Convert.ToInt32(el) > 255)
                     throw new MeSettingsException(el + " не корректное значение (диапазон от 1 до 255)");
             }
 
