@@ -114,11 +114,13 @@ namespace CSharp_Work12_IpPort
         public MeSettingsException(string message)
             : base(message)
         {
+
         }
 
         MeSettingsException(string message, Exception exception)
             : base(message, exception)
         {
+
         }
     }
 }
